@@ -1,0 +1,73 @@
+Here we are going to solve one example of Round Robin with Priority scheduling to learn how it actually works. 
+Q)
+PROCESSE	 ARIVAL TIME	  BURST TIME	  PRIORITY
+    P1	            5                   4	     6
+    P2	            3                   5            0
+    P3	            0                   7            4
+    P4	            2                   3            5
+	Time quantum = 2
+	Higher no. indicates higher priority.
+	
+Sol.
+
+At arrival time 0 process P3 arrives in system for execution.
+After the execution of P3 after time quantum of 2 and left burst time is 5, P4 arrives having a	arrival time 2.
+So now we have 2 process in ready queue. 
+              
+              P3       P4
+
+So, firstly we will compare the priority of the processes. Since P4 is having higher priority in the queue so it will execute first.
+Until P4 executes p2 will arrive in ready queue.
+So now its burst time left is 1
+
+                P4	    P3	     P2
+
+Again we will compare priority, p4 is having higher priority in the queue, so it will execute again till it task gets over or time quantum. 
+Now p4 is executed and completed its task having left burst time 0. Thus the total execution time till now is 5.
+Now in our ready queue we have   3 processes
+
+                P3	    P2	      P1
+
+Again we compare the priority of the processes among the queue, p1 is having higher priority, so it will execute first in queue.
+After the execution of the p1 its burst time left is 2. And total process in the queue is 3
+
+                P3     P2	    P1
+
+Now again we will compare their priority, again p1 is having highest priority so it will execute again.
+After the execution of the process p1 its burst tme left is 0,thus it is executed completely.
+Now in our ready queue we have 2 processes
+
+                P3	    P2
+
+Similarly as above we will compare priority, p3 is having higher priority so it will execute first.
+After the execution of p3 its burst time left is 3.
+
+No. of queues in our ready queue is only 2, among those p3 is having higher priority so p3 will execute till its burst time becomes 0.
+After complete execution of p3 our total execution time is 14.
+
+So now only one process is left in our ready queue, thus it will execute completely.
+And our total execution is 18.
+
+Now, our all the processes has been executed. 
+
+The process has executed in the following manner with their execution time:
+  
+
+      P3	      P4	      P4	      P1	      P1	      P3	        P3	        P3	        P2	        P2
+     0-2             2-4	      4-5	      5-7	      7-9            9-11	       11-13	       13-14	       14-16	       16-19
+  
+
+
+So our final table is:
+
+Process	    Arrival Time         Burst Time	  Priority	  CompletionTime     Turn AroundTime     Waiting Time
+   (P)              (AT)            (BT)                            (CT)             (TAT)TAT=CT-AT      (WT)WT =TAT-BT
+   
+   P1	              5	            4                 6	              9	                     4                 0
+   P2	              3             5                 0	             19	                     16	               11
+   P3	              0             7	              4	             14	                     14	               7
+   P4	              2	            3	              5	              5	                     3	               0
+
+Average Waiting Time = 18/4 = 4.5 
+Average Turn Around Time = 37/4 = 9.25
+
