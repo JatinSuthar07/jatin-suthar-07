@@ -1,2 +1,3 @@
 # jatin-suthar-07
-process scheduling using round robin and priority concept
+The project is about scheduling process using "Round Robin " and "Priority" with protecting process from Starvation using concept of Ageing.
+
