@@ -1,23 +1,25 @@
 #include<stdio.h>
 
-
 struct round
 {
-int p,at,bt,wt,tat,ct,pr;
+int p,at,bt,wt,tat,ct,pr,st;
 }r[50];
 
 main()
 {
-int min,maxp=0,k,n,c=0,t=0,tq,rt[50],rq[50],l=0;
+int min,maxp=0,k,n,c=0,t=0,tq,rt[50];
 printf("\nEnter the no. of process ");
 scanf("\t%d",&n);
+c=n;
 for(int i=0;i<n;i++)
 {
 r[i].p=i+1;
+r[i].st=2;
 printf("\nEnter the arival time for process  %d : ",i+1);
 scanf("\t%d",&r[i].at);
 printf("Enter the Burst time for process  %d : ",i+1);
 scanf("\t%d",&r[i].bt);
+
 t=t+r[i].bt;
 rt[i]=r[i].bt;
 printf("Enter the Priority for process  %d : ",i+1);
@@ -35,17 +37,14 @@ for(int i= 1;i<n;i++)
 	}
 	if(r[i].at==min)
 	{
-		rq[l]=i;
-		l++;
-	}s
-}
-for(int i=0;i<l;i++)
-{
-	if(r[i].pr>maxp)
-	{
-		maxp=r[i].pr;
-		
+		r[i].st=1;
 	}
 }
+for(int i=0;i<n;i++)
+{
+	if(r[i].pr>maxp and r[i].st==1)
+	{
+		maxp=i;
+	}
 }
 
