@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 
 struct round
@@ -25,8 +24,10 @@ printf(" Priority   P%d :\t",i+1);
 scanf("\t%d",&r[i].pr);
 }
 printf("\n\n\nEnter the time quantum");
-scanf("\t%d",tq);
+scanf("\t%d",&tq);
+
 min=r[0].at;
+
 for(i= 1;i<n;i++)
 {
 	if(r[i].at<min)
@@ -39,6 +40,7 @@ for(i= 1;i<n;i++)
 		r[i].st=1;
 	}
 }
+printf("b");
 for(t=min;c!=0;)
 {
 for(i=0;i<n;i++)
@@ -50,7 +52,7 @@ for(i=0;i<n;i++)
 	if(r[i].pr>a && r[i].st==1)
 	{
 		a=i;
-	}
+	3}
 }
 if(rt[a]<=tq&&rt[a]>0)
 {
@@ -71,10 +73,10 @@ if(rt[a]==0 && r[a].st==1)
 	r[a].wt=r[a].tat-r[a].bt;
 	tt=tt+r[a].tat;
 	awt=awt+r[a].wt;
-	printf("P%d\t%d\t%d\t%d\t%d\t%d\t%d",a+1,r[a].at,r[a].bt,r[a].pr,r[a].ct,r[a].tat,r[a].wt);
+	printf("\nP%d\t%d\t%d\t%d\t%d\t%d\t%d",a+1,r[a].at,r[a].bt,r[a].pr,r[a].ct,r[a].tat,r[a].wt);
 	r[a].st=0;
 }
 }
-printf("average turn around time is \t%d",tt/n);
-printf("average waiting time is \t%d",awt/n);
+printf("\n\naverage Turn-Tround-Time is \t%d",tt/n);
+printf("\naverage Waiting-Time is \t%d",awt/n);
 }
