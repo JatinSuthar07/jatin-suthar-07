@@ -1,10 +1,10 @@
 Here we are going to solve one example of Round Robin with Priority scheduling to learn how it actually works. 
 Q)
 PROCESSE	 ARIVAL TIME	  BURST TIME	  PRIORITY
-    P1	            5                   4	     6
-    P2	            3                   5            0
-    P3	            0                   7            4
-    P4	            2                   3            5
+    P1	            5                   4	               6
+    P2	            3                   5                 0
+    P3	            0                   7                 4
+    P4	            2                   3                 5
 	Time quantum = 2
 	Higher no. indicates higher priority.
 	
@@ -53,21 +53,29 @@ Now, our all the processes has been executed.
 The process has executed in the following manner with their execution time:
   
 
-      P3	      P4	      P4	      P1	      P1	      P3	        P3	        P3	        P2	        P2
+      P3	             P4	      P4	        P1	        P1	              P3	            P3	            P3	          P2	              P2
      0-2             2-4	      4-5	      5-7	      7-9            9-11	       11-13	       13-14	       14-16	       16-19
   
 
 
-So our final table is:
+So our final table without aging is:
 
 Process	    Arrival Time         Burst Time	  Priority	  CompletionTime     Turn AroundTime     Waiting Time
    (P)              (AT)            (BT)                            (CT)             (TAT)TAT=CT-AT      (WT)WT =TAT-BT
    
-   P1	              5	            4                 6	              9	                     4                 0
-   P2	              3             5                 0	             19	                     16	               11
-   P3	              0             7	              4	             14	                     14	               7
-   P4	              2	            3	              5	              5	                     3	               0
-
-Average Waiting Time = 18/4 = 4.5 
-Average Turn Around Time = 37/4 = 9.25
+   P1	              5	            4                      6	              9	                     4                         0
+   P2	              3             5                     0	             19	                  16	                       11
+   P3	              0             7	                   4 	             14	                  14	                        7
+   P4	              2	            3	                     5	              5	                     3	                        0
+  
+ final table with aging is:
+ Process	    Arrival Time         Burst Time	  Priority	  CompletionTime     Turn AroundTime     Waiting Time
+   (P)              (AT)            (BT)                            (CT)             (TAT)TAT=CT-AT      (WT)WT =TAT-BT
+   
+   P1	              5	            4                      6	              9	                     4                         0
+   P2	              3             5                     6	             18	                  15                       10
+   P3	              0             7	                   4 	             19	                  19	                       12
+   P4	              2	            3	                     5	              5	                     3	                        0
+Average Waiting Time = 22/4 = 5.5 
+Average Turn Around Time = 41/4 = 10.25
 
