@@ -51,6 +51,11 @@ for(t=min;c!=0;)
 
 for(i=0;i<n;i++)
 {
+	if(r[i].f>n && r[1].st==1)
+{
+	r[i].pr+=2;
+	r[i].f--;
+}
 	if(r[i].at<=t && r[i].st!=0)
 	{
 		r[i].st=1;
@@ -58,7 +63,6 @@ for(i=0;i<n;i++)
 	if(r[i].pr<=minp && r[i].st==1)
 	{
 		minp=r[i].pr;
-		b=i;
 	}
 	if(r[i].pr>=maxp && r[i].st==1)
 	{
@@ -71,7 +75,6 @@ if(rt[a]<=tq&&rt[a]>0)
 	t=t+rt[a];
 	rt[a]=0;
 	r[a].st=1;
-	r[b].f=r[b].f+1;
 	r[a].f=0;
 }
 else if(rt[a]>0)
@@ -80,7 +83,14 @@ else if(rt[a]>0)
 	t=t+tq;
 	if(r[a].f>0)
 		r[a].f=r[a].f-1;
-	r[b].f=r[b].f+1;
+	
+}
+for(j=0;j<n;j++)
+{
+	if(j!=a && r[j].st==1)
+	{
+		r[b].f=r[b].f+1;		
+	}
 }
 if(rt[a]==0 && r[a].st==1)
 {
@@ -93,14 +103,10 @@ if(rt[a]==0 && r[a].st==1)
 	printf("\n  P%d \t\t%d  \t%d  \t%d  \t%d   \t%d  \t%d",a+1,r[a].at,r[a].bt,r[a].pr,r[a].ct,r[a].tat,r[a].wt);
 	r[a].st=0;
 }
-if(r[b].f>n && r[b].st==1)
-{
-	r[b].pr+=2;
-	r[b].f--;
-}
+
+
 maxp=minp;
 }
 printf("\n\naverage Turn-Tround-Time is \t%0.2f",tt/n);
 printf("\naverage Waiting-Time is \t%0.2f",awt/n);
 }
-
